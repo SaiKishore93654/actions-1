@@ -3,19 +3,27 @@ name: "Generate ASCII ARTWORK"
 on: push
 
 jobs:
-    asci_job:
+    build_job:
         runs-on: ubuntu-latest
         steps:
-        - name: Checkout repo
-          uses: actions/checkout@v4
+        - name: Install cowsay program
+          uses: sudo apt-get install cowsay -y
 
-        - name: Checkout repo files
-          run: ls
+        - name: Execute cowsay cmd
+          run: cowsay -f dragon "hello world" >> dragon.txt
 
-        - name: Execute Shell Script
-          run: |
-              sudo chmod +x ascii.sh
-              ./ascii.sh
+        - name: Sleep for 30 seconds
+          run: sleep 30
+
+    test_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Sleep 10 seconds
+          run: sleep 10
+        - name: test file exist
+          run: grep -i "hello" dragon.txt
+                    
+              
 
         
 
