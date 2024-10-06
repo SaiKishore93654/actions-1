@@ -9,13 +9,15 @@ jobs:
         - name: Checkout repo
           uses: actions/checkout@v4
 
-        - name: Execute Shell Script
-          run: |
-            chmod +x ascii.sh
-            ./ascii.sh
-
         - name: Checkout repo files
           run: ls
+
+        - name: Execute Shell Script
+          run: |
+              chmod +x ascii.sh
+              ./ascii.sh
+
+        
 
 
           
